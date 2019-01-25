@@ -1,0 +1,20 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: demo-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: demo
+  template:
+    metadata:
+      labels:
+        app: demo
+    spec:
+      containers:
+      - name: demo
+        image: daocloud.io/library/tomcat:6.0-jre7
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
